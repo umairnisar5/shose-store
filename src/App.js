@@ -1,15 +1,55 @@
-import React from 'react';
-import {BrowserRouter as Router, Router, Routes, Route } from 'react-router-dom'; 
-import './App.css';
-
+import React from "react";
+import {
+  BrowserRouter as Router,
+  Switch,
+  Route,
+  Link
+} from "react-router-dom";
 
 export default function App() {
-  return <Router>
-    <Routes>
-    <Route path="/ "  element={<Home/>} />
-    </Routes>
+  return (
+    <Router>
+
+    <nav>
+       <Link to ="/">Home</Link>
+       <Link to ="/Launch">Launch</Link>
+    </nav>
+
+    <Switch>
+    <Route path="/"  element={<Home/>} />
+    <Route path="launch" element={<Launch/>}/>
+    <Route path="/" element={<LaunchIndex/>}/>
+
+    </Switch>
   </Router>
-        
+  );       
+}
+
+function Home (){
+  return(
+    <div>
+      <h1>wellcomw Home</h1>
+    </div>
+  );
+}
+
+function  Launch(){
+  return(
+  <div>
+  <h1>Launch</h1>
+  </div>
+  );
+}
+function LaunchIndex(){
+  return <ul>
+     {Object.entries(shoes).map(([slug, {name, img}]) =>
+     <li Key={slug}> 
+     <h2>{name}</h2>
+     <img src={img} alt={name} />
+     </li> )}
+  </ul>
+    
+  
 }
 
 
